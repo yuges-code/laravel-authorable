@@ -1,13 +1,19 @@
 <?php
 
-namespace Yuges\Package\Tests\Stubs\Models;
+namespace Yuges\Authorable\Tests\Stubs\Models;
 
+use Yuges\Package\Traits\HasKey;
 use Yuges\Package\Traits\HasTable;
-use Illuminate\Database\Eloquent\Model;
+use Yuges\Authorable\Traits\CanAuthor;
+use Yuges\Authorable\Interfaces\Author;
+use Yuges\Package\Traits\HasTimestamps;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable implements Author
 {
-    use HasTable;
+    use CanAuthor, HasKey, HasTable, HasTimestamps;
 
     protected $table = 'users';
+
+    protected $guarded = ['id'];
 }
