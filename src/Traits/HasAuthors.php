@@ -43,10 +43,11 @@ trait HasAuthors
         return $this->detachAuthor($author);
     }
 
-    public function isAuthor(Author $author): bool
+    public function isAuthor(?Author $author = null): bool
     {
         $pivot = new Authorship();
         $relation = $pivot->author();
+        $author ??= $this->defaultAuthor();
 
         $attributes = [
             $relation->getForeignKeyName() => $author instanceof Model ? $author->getKey() : null,

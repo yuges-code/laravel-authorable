@@ -11,9 +11,15 @@ class AuthorableObserver
     {
         $options = $authorable->authorable();
 
-        if ($options->auto) {
-            $authorable->attachAuthor();
+        if (! $options->auto) {
+            return;
         }
+
+        if ($authorable->isAuthor()) {
+            return;
+        }
+
+        $authorable->attachAuthor();
     }
 
     public function deleted(Authorable $authorable): void

@@ -18,6 +18,8 @@ interface Authorable
 
     public function unauthor(Author $author): static;
 
+    public function isAuthor(?Author $author = null): bool;
+
     public function attachAuthor(?Author $author = null): static;
 
     public function attachAuthors(?Collection $authors = null): static;

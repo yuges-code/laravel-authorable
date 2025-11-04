@@ -43,5 +43,9 @@ class AuthorTest extends TestCase
             'authorable_id' => $post->getKey(),
             'authorable_type' => $post->getMorphClass(),
         ]);
+
+        $post->update([
+            'title' => 'Test',
+        ]);
     }
 }
